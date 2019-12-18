@@ -2,23 +2,21 @@ package model;
 
 import java.io.Serializable;
 
-public class item implements Serializable {
+public class Item implements Serializable {
 	private String itemCode;
 	private String itemName;
-	private String tani;
+	private String unit;
 	private String bunrui;
-	private int torihikiCode;
-	private String torihikiName;
-	private double tanka;
+	private int customer;
+	private double price;
 
-	public item(String itemCode, String itemName, String tani, String bunrui, int torihikiCode, String torihikiName, double tanka) {
-		this.itemCode = itemCode;
-		this.itemName = itemName;
-		this.tani = tani;
-		this.bunrui = bunrui;
-		this.torihikiCode = torihikiCode;
-		this.torihikiName = torihikiName;
-		this.tanka = tanka;
+	public Item(String itemCode, String itemName, String unit, String bunrui, int customer, double prive) {
+		this.setItemCode(itemCode);
+		this.setItemName(itemName);
+		this.setUnit(unit);
+		this.setBunrui(bunrui);
+		this.setCustomer(customer);
+		this.setPrice(prive);
 	}
 
 	public String getItemCode() {
@@ -27,44 +25,41 @@ public class item implements Serializable {
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
+
 	public String getItemName() {
 		return itemName;
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-	public String getTani() {
-		return tani;
+
+	public String getUnit() {
+		return unit;
 	}
-	public void setTani(String tani) {
-		this.tani = tani;
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
+
 	public String getBunrui() {
 		return bunrui;
 	}
 	public void setBunrui(String bunrui) {
 		this.bunrui = bunrui;
 	}
-	public int getTorihikiCode() {
-		return torihikiCode;
+
+	public int getCustomer() {
+		return customer;
 	}
-	public void setTorihikiCode(int torihikiCode) {
-		this.torihikiCode = torihikiCode;
-	}
-	public String getTorihikiName() {
-		return torihikiName;
-	}
-	public void setTorihikiName(String torihikiName) {
-		this.torihikiName = torihikiName;
-	}
-	public double getTanka() {
-		return tanka;
-	}
-	public void setTanka(double tanka) {
-		this.tanka = tanka;
+	public void setCustomer(int customer) {
+		this.customer = customer;
 	}
 
-
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
 
 
