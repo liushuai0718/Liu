@@ -12,7 +12,7 @@
 		<hr>
 
 		<ul>
-			<li><a href = "/esoft/Item">品目マスタ</a></li>
+			<li><a href = "/esoft/Items">品目マスタ</a></li>
 			<li><a href = "/esoft/Customers">お客様マスタ</a></li>
 		</ul>
 

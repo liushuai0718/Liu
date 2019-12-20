@@ -33,7 +33,7 @@ public class ItemDAO {
 			//INSERT文を実行
 			int result = pStmt.executeUpdate();
 			if(result != 1) {
-				System.out.println("失敗");
+//				System.out.println("失敗");
 				return false;
 			}
 
@@ -41,7 +41,7 @@ public class ItemDAO {
 			e.printStackTrace();
 			return false;
 		}
-		System.out.println("成功");
+//		System.out.println("成功");
 		return true;
 	}
 
