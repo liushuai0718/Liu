@@ -9,14 +9,24 @@ public class Item implements Serializable {
 	private String bunrui;
 	private int customer;
 	private double price;
+	private double onHand;
+	private double shuka;
+	private double nyuka;
 
-	public Item(String itemCode, String itemName, String unit, String bunrui, int customer, double prive) {
+	public Item(String itemCode, String itemName, String unit, String bunrui, int customer, double price) {
 		this.setItemCode(itemCode);
 		this.setItemName(itemName);
 		this.setUnit(unit);
 		this.setBunrui(bunrui);
 		this.setCustomer(customer);
-		this.setPrice(prive);
+		this.setPrice(price);
+	}
+
+	public Item(String itemCode, String itemName, String unit, String bunrui, int customer, double price, double onHand, double shuka, double nyuka) {
+		this(itemCode, itemName, unit, bunrui, customer, price);
+		this.setOnHand(0);
+		this.setShuka(0);
+		this.setNyuka(0);
 	}
 
 	public String getItemCode() {
@@ -61,6 +71,25 @@ public class Item implements Serializable {
 		this.price = price;
 	}
 
+	public double getOnHand() {
+		return onHand;
+	}
+	public void setOnHand(double onHand) {
+		this.onHand = onHand;
+	}
 
+	public double getShuka() {
+		return shuka;
+	}
+	public void setShuka(double shuka) {
+		this.shuka = shuka;
+	}
+
+	public double getNyuka() {
+		return nyuka;
+	}
+	public void setNyuka(double nyuka) {
+		this.nyuka = nyuka;
+	}
 
 }
