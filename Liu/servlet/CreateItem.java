@@ -43,6 +43,8 @@ public class CreateItem extends HttpServlet {
 		CreateItemLogic createLogic = new CreateItemLogic();
 		createLogic.execute(item);
 
+
+
 		//登録完了画面へ移動
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CreateItemComplete.jsp");
 		dispatcher.forward(request, response);

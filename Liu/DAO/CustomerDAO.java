@@ -13,7 +13,7 @@ public class CustomerDAO {
 	private final String DB_USER = "liu";
 	private final String DB_PASS = "liu";
 
-	public boolean CreateCustomer(Customer c) {
+	public boolean createCustomer(Customer customer) {
 
 		//データベース接続
 		try(Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
@@ -22,11 +22,11 @@ public class CustomerDAO {
 			String sql = "INSERT INTO CUSTOMERS VALUES(?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			pStmt.setInt(1, c.getCustomerCode());
-			pStmt.setString(2, c.getCustomerName());
-			pStmt.setString(3, c.getAddress());
-			pStmt.setString(4, c.getTel());
-			pStmt.setString(5, c.getTsuka());
+			pStmt.setInt(1, customer.getCustomerCode());
+			pStmt.setString(2, customer.getCustomerName());
+			pStmt.setString(3, customer.getAddress());
+			pStmt.setString(4, customer.getTel());
+			pStmt.setString(5, customer.getTsuka());
 
 			//INSERT文を実行
 			int result = pStmt.executeUpdate();

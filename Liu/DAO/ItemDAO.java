@@ -15,7 +15,7 @@ public class ItemDAO {
 	private final String DB_PASS = "liu";
 
 	//品目新規登録
-	public boolean CreateItem(Item item) {
+	public boolean createItem(Item item) {
 
 		//データベース接続
 		try(Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
@@ -49,8 +49,8 @@ public class ItemDAO {
 
 	//品目在庫確認
 	public Item selectItem(String itemCode) {
-		Item item = null;
 
+		Item item = null;
 		try(Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
 			//SELECT文の準備
@@ -76,41 +76,51 @@ public class ItemDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("失敗");
+//			System.out.println("失敗");
 			return null;
 		}
 
 		return item;
 	}
 
-	public boolean UpdateItemQuantity(String itemCode, double suryou) {
+	//在庫調整
+	public boolean updateItemQuantity(String itemCode, double suryou) {
 
 		//データベース接続
 		try(Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
+			//SELECT文の準備（現時点手持ち数量取得）
+
+			double onHand = 0;
+
+			String sql1 = "select ONHAND from INVENTORY where ITEMCODE = ?";
+			PreparedStatement pStmt1 = conn.prepareStatement(sql1);
+
+			pStmt1.setString(1, itemCode);
+
+			ResultSet rs1 = pStmt1.executeQuery();
+			if(rs1.next()) {
+				onHand = rs1.getDouble("onHand");
+//				System.out.println(onHand);		//実行状況確認ための呪文
+			}
+
+
 			//UPDATE文の準備
-			String sql = "update INVENTORY set ONHAND = ? where ITEMCODE = ?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			String sql2 = "update INVENTORY set ONHAND = ? where ITEMCODE = ?";
+			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
-			pStmt.setString(1, itemCode);
-			pStmt.setDouble(2, suryou);
-			/*
-			pStmt.setString(3, item.getUnit());
-			pStmt.setString(4, item.getBunrui());
-			pStmt.setInt(5, item.getCustomer());
-			pStmt.setDouble(6, item.getPrice());
-			pStmt.setString(7, item.getItemCode());
-			*/
+			pStmt2.setDouble(1, (onHand + suryou));
+			pStmt2.setString(2, itemCode);
 
-			//INSERT文を実行
-			int result = pStmt.executeUpdate();
+			//UPDATE文を実行
+			int result = pStmt2.executeUpdate();
 			if(result != 1) {
-//				System.out.println("失敗");
+//				System.out.println("失敗1");
 				return false;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("失敗");
+//			System.out.println("失敗2");
 			return false;
 		}
 		return true;

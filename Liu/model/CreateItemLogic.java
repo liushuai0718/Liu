@@ -5,7 +5,7 @@ import DAO.ItemDAO;
 public class CreateItemLogic {
 	public void execute(Item item) {
 		ItemDAO dao = new ItemDAO();
-		dao.CreateItem(item);
+		dao.createItem(item);
 
 	}
 

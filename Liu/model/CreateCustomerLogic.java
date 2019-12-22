@@ -3,9 +3,9 @@ package model;
 import DAO.CustomerDAO;
 
 public class CreateCustomerLogic {
-	public void execute(Customer c) {
+	public void execute(Customer customer) {
 		CustomerDAO dao = new CustomerDAO();
-		dao.CreateCustomer(c);
+		dao.createCustomer(customer);
 
 	}
 

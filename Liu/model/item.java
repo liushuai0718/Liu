@@ -24,9 +24,9 @@ public class Item implements Serializable {
 
 	public Item(String itemCode, String itemName, String unit, String bunrui, int customer, double price, double onHand, double shuka, double nyuka) {
 		this(itemCode, itemName, unit, bunrui, customer, price);
-		this.setOnHand(0);
-		this.setShuka(0);
-		this.setNyuka(0);
+		this.setOnHand(onHand);
+		this.setShuka(shuka);
+		this.setNyuka(nyuka);
 	}
 
 	public String getItemCode() {

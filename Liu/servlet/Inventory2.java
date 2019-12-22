@@ -30,6 +30,10 @@ public class Inventory2 extends HttpServlet {
 		//UPDATE文処理
 		UpdateItemQuantityLogic UpdateLogic = new UpdateItemQuantityLogic();
 		UpdateLogic.execute(itemCode, suryou);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Inventory2_result2.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 }
