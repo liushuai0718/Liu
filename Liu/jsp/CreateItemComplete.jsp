@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import = "model.Item" %>
-<%  Item item = (Item)session.getAttribute("item"); %>
+<%  Item item = (Item)request.getAttribute("item"); %>
 
 <!DOCTYPE html>
 <html>

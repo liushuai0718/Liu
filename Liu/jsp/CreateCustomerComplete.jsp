@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import = "model.Customer" %>
-<%  Customer c = (Customer)session.getAttribute("customer"); %>
+<%  Customer customer = (Customer)request.getAttribute("customer"); %>
 
 <!DOCTYPE html>
 <html>
@@ -18,27 +18,27 @@
 		<table border = "1">
 			<tr>
 				<td>お客様コード：</td>
-				<td><%= c.getCustomerCode() %></td>
+				<td><%= customer.getCustomerCode() %></td>
 			</tr>
 
 			<tr>
 				<td>お客様名称：</td>
-				<td><%= c.getCustomerName() %></td>
+				<td><%= customer.getCustomerName() %></td>
 			</tr>
 
 			<tr>
 				<td>住所：</td>
-				<td><%= c.getAddress() %></td>
+				<td><%= customer.getAddress() %></td>
 			</tr>
 
 			<tr>
 				<td>電話：</td>
-				<td><%= c.getTel() %></td>
+				<td><%= customer.getTel() %></td>
 			</tr>
 
 			<tr>
 				<td>通貨コード：</td>
-				<td><%= c.getTsuka() %></td>
+				<td><%= customer.getTsuka() %></td>
 			</tr>
 		</table>
 

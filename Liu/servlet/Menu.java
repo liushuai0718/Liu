@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 public class Menu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+//	public void init(ServletConfig config) throws ServletException {
+//		super.init(config);
+//	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Menu.jsp");
 		dispatcher.forward(request, response);

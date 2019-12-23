@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.Item;
 import model.SelectItemLogic;
@@ -34,9 +33,8 @@ public class Inventory1 extends HttpServlet {
 		SelectItemLogic selectLogic = new SelectItemLogic();
 		item = selectLogic.execute(itemCode);
 
-		//セッションスコープにお客様情報を保存
-		HttpSession session = request.getSession();
-		session.setAttribute("item", item);
+		//リクエストスコープにお客様情報を保存
+		request.setAttribute("item", item);
 
 		//登録完了画面へ移動
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Inventory1_result.jsp");

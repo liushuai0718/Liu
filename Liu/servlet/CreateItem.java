@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.CreateItemLogic;
 import model.Item;
@@ -35,15 +34,12 @@ public class CreateItem extends HttpServlet {
 		//品目初期化
 		Item item = new Item(itemCode, itemName, unit, bunrui, customer, price);
 
-		//セッションスコープにお客様情報を保存
-		HttpSession session = request.getSession();
-		session.setAttribute("item", item);
+		//リクエストスコープにお客様情報を保存
+		request.setAttribute("item", item);
 
 		//入力内容をデータベースに保存
 		CreateItemLogic createLogic = new CreateItemLogic();
 		createLogic.execute(item);
-
-
 
 		//登録完了画面へ移動
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CreateItemComplete.jsp");

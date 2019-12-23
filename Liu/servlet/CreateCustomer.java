@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.CreateCustomerLogic;
 import model.Customer;
@@ -32,15 +31,14 @@ public class CreateCustomer extends HttpServlet {
 		String tsuka = request.getParameter("tsuka");
 
 		//お客様初期化
-		Customer c = new Customer(customerCode, customerName, address, tel, tsuka);
+		Customer customer = new Customer(customerCode, customerName, address, tel, tsuka);
 
-		//セッションスコープにお客様情報を保存
-		HttpSession session = request.getSession();
-		session.setAttribute("customer", c);
+		//ルクエストスコープにお客様情報を保存
+		request.setAttribute("customer", customer);
 
 		//入力内容をデータベースに保存
 		CreateCustomerLogic createLogic = new CreateCustomerLogic();
-		createLogic.execute(c);
+		createLogic.execute(customer);
 
 		//登録完了画面へ移動
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CreateCustomerComplete.jsp");
